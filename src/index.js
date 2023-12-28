@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import sum from '@/test';
-// sum(1,2)
-console.log(sum(1,2))
+import './comon.css'
+// import App from './App';
+// 导入我们的路由
+import router from './router/router'
+import {RouterProvider} from 'react-router-dom'
+// console.log(sum(1,2))
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <RouterProvider router={router}></RouterProvider>
 );
 
 
