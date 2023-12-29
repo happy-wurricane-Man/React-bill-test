@@ -1,4 +1,4 @@
-
+// 创建路由实例 绑定path element
 import Layout from "@/pages/Layout";
 import New from "@/pages/New";
 import Month from "@/pages/Month";
@@ -11,13 +11,14 @@ const router = createBrowserRouter([
         element: <Layout />,
         children:[
             {
-                index:true,
+                path: 'month',
                 element:<Month />
             },
             {
-                path:'year',
+                path:'/year',
                 element:<Year />
-            }
+            },
+           
         ]
     },
     {
