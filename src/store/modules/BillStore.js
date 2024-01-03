@@ -11,16 +11,28 @@ const  billStore = createSlice({
        //同步修改
         setbillList(state, action) {
             state.billList  = action.payload
+        },
+        //同步添加账单
+        addbill(state, action){
+            state.billList.push(action.payload)
         }
+
     }
 })
 // 解构actionCreater函数
-const { setbillList} = billStore.actions
+const { setbillList,addbill} = billStore.actions
 const fetchsetbillList = () => {
     return async (dispatch) => {
         // 编写异步
         const res = await axios.get(' http://localhost:8888/ka')
         dispatch(setbillList(res.data))
+    }
+}
+const postaddbill =(data)=>{
+    return async (dispatch) => {
+        // 编写异步
+        const res = await axios.post(' http://localhost:8888/ka',data)
+        dispatch(addbill(res.data))
     }
 }
 // 当在 Redux 中使用异步操作时，可以使用 Redux Thunk 中间件来处理异步逻辑。在这个代码块中，dispatch 的作用是将一个包含异步操作的函数（thunk）分发到 Redux store 中。
@@ -31,7 +43,7 @@ const fetchsetbillList = () => {
 // 通过分发 action，Redux store 会执行对应的 reducer，更新相应的状态。这样，可以实现在异步操作完成后更新应用程序的状态。
 
 // 简而言之，dispatch 的作用是将包含异步操作的函数分发到 Redux store 中，以触发对应的状态更新。
-export { fetchsetbillList}
+export { fetchsetbillList,postaddbill}
 //导出reducer
 const reducer = billStore.reducer
 export default reducer

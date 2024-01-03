@@ -16,7 +16,7 @@ const Layout = () => {
     },[dispatch])
     const tabs = [
         {
-          key: '/month',
+          key: '/',
           title: '月度账单',
           icon: <BillOutline />,
         },
